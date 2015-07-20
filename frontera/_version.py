@@ -36,8 +36,8 @@ def get_config():
     cfg = VersioneerConfig()
     cfg.VCS = "git"
     cfg.style = ""
-    cfg.tag_prefix = "v"
-    cfg.parentdir_prefix = "frontera"
+    cfg.tag_prefix = ""
+    cfg.parentdir_prefix = "frontera-"
     cfg.versionfile_source = "frontera/_version.py"
     cfg.verbose = False
     return cfg
