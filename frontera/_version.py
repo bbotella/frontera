@@ -35,9 +35,9 @@ def get_config():
     # _version.py
     cfg = VersioneerConfig()
     cfg.VCS = "git"
-    cfg.style = "pep440"
-    cfg.tag_prefix = ""
-    cfg.parentdir_prefix = "frontera-"
+    cfg.style = ""
+    cfg.tag_prefix = "v"
+    cfg.parentdir_prefix = "frontera"
     cfg.versionfile_source = "frontera/_version.py"
     cfg.verbose = False
     return cfg
@@ -171,7 +171,7 @@ def git_versions_from_keywords(keywords, tag_prefix, verbose):
     # no suitable tags, so version is "0+unknown", but full hex is still there
     if verbose:
         print("no suitable tags, using unknown + full revision id")
-    return {"version": "0+no+suitable+tags",
+    return {"version": "0+unknown",
             "full-revisionid": keywords["full"].strip(),
             "dirty": False, "error": "no suitable tags"}
 
@@ -439,7 +439,7 @@ def get_versions():
         for i in cfg.versionfile_source.split('/'):
             root = os.path.dirname(root)
     except NameError:
-        return {"version": "0+unable+to+find+root+of+source+tree", "full-revisionid": None,
+        return {"version": "0+unknown", "full-revisionid": None,
                 "dirty": None,
                 "error": "unable to find root of source tree"}
 
@@ -455,6 +455,6 @@ def get_versions():
     except NotThisMethod:
         pass
 
-    return {"version": "0+unable+to+compute+version", "full-revisionid": None,
+    return {"version": "0+unknown", "full-revisionid": None,
             "dirty": None,
             "error": "unable to compute version"}
